@@ -1,0 +1,17 @@
+{
+    "name": "renzomedina/store",
+    "description": "This a store basic",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Renzomedina\\Store\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "RenzoMedina",
+            "email": "medinast30@gmail.com"
+        }
+    ],
+    "require": {}
+}
