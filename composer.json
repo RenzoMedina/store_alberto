@@ -4,9 +4,9 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "App\\": "App/",
-            "Core\\": "Core/",
-            "Routes\\": "Routes/"
+            "app\\": "app/",
+            "core\\": "core/",
+            "routes\\": "routes/"
         },
         "files": ["functions.php"]
     },

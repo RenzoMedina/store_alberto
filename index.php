@@ -1,3 +1,3 @@
 <? 
 require 'vendor/autoload.php';
-require "Routes/route.php";
+require "routes/route.php";

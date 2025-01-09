@@ -1,5 +1,5 @@
 <?
-use App\Controllers\HomeController;
+use app\controllers\HomeController;
 
 $home = HomeController::class;
 
