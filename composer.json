@@ -4,7 +4,9 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Renzomedina\\Store\\": "src/"
+            "App\\": "App/",
+            "Core\\": "Core/",
+            "Routes\\": "Routes/"
         }
     },
     "authors": [
@@ -13,5 +15,7 @@
             "email": "medinast30@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "flightphp/core": "^3.13"
+    }
 }
