@@ -1,6 +1,6 @@
 <?
 namespace app\controllers;
-class ProductController{
+class StoreController{
 
     public function index(){
         view('product');
