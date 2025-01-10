@@ -13,15 +13,16 @@ class QueryBuilder{
 
     public function createUser($data){
         $values = json_decode($data, true);
-        $sql = "INSERT INTO table_user (nombre,apellido,password,repeat_password) VALUES (?,?,?,?)";
+        $sql = "INSERT INTO table_users (nombre,apellido,password,repeat_password,id_rol) VALUES (?,?,?,?,?)";
         try{
             $query = $this->conn->prepare($sql);
-            $query->bindParam(1,$values['nombre']);
-            $query->bindParam(2,$values['apellido']);
+            $query->bindParam(1,$values['nombre'],PDO::PARAM_STR);
+            $query->bindParam(2,$values['apellido'],PDO::PARAM_STR);
             $hashedPassword = password_hash($values['password'], PASSWORD_DEFAULT);
-            $query->bindParam(3, $hashedPassword);
+            $query->bindParam(3, $hashedPassword,PDO::PARAM_STR);
             $repeatHashedPassword = password_hash($values['repeat_password'],  PASSWORD_DEFAULT);
-            $query ->bindParam(4,$repeatHashedPassword);
+            $query ->bindParam(4,$repeatHashedPassword,PDO::PARAM_STR);
+            $query->bindParam(5, $values['id_rol'], PDO::PARAM_INT);
             $query->execute();
             
         }catch(PDOException $e){
