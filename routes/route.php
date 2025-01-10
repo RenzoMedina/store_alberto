@@ -7,11 +7,17 @@ use app\controllers\ProductController;
 $home = HomeController::class;
 
 Flight::route('GET /', [$home,'index']);
+
 Flight::route('GET /report',function(){
     view('report');
 });
+
 Flight::route('GET /setting',function(){
     view('settings');
+});
+
+Flight::route('GET /login', function(){
+    view('login');
 });
 
 Flight::group('/store', function(){
@@ -19,11 +25,13 @@ Flight::group('/store', function(){
     $store = StoreController::class;
     Flight::route('/', [$store, 'index']);
 });
+
 Flight::group('/user', function(){
     //class UserController
     $user = UserController::class;
     Flight::route('GET /', [$user, 'index']);
 });
+
 Flight::group("/product", function(){
     //class ProductController
     $product = ProductController::class;

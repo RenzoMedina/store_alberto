@@ -3,7 +3,7 @@ namespace app\controllers;
 class StoreController{
 
     public function index(){
-        view('product');
+        view('store');
     }
     public function store(){}
     public function show($id){}
