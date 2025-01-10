@@ -30,6 +30,7 @@ Flight::group('/user', function(){
     //class UserController
     $user = UserController::class;
     Flight::route('GET /', [$user, 'index']);
+    Flight::route('POST /store',[$user, 'store']);
 });
 
 Flight::group("/product", function(){
