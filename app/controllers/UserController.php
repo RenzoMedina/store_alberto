@@ -23,13 +23,13 @@ class UserController{
         session_start();
         $request = Flight::request()->data;
         $json = json_encode( $request );
-        if($this->user->validateIdUser($json )){
+        if($this->user->validateIdUser($json)){
+            $_SESSION['user_error']='El usuario ya existe, intente con otros datos';
+            Flight::redirect("/user");
+        }else{
             $this->user->createUser($json);
             $_SESSION['user_success']='Usuario creado exitosamente.';
             Flight::redirect("/");
-        }else{
-            $_SESSION['user_error']='El usuario ya existe, intente con otros datos';
-            Flight::redirect("/user");
         }
         
     }

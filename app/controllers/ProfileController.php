@@ -21,11 +21,11 @@ class ProfileController{
         $request = Flight::request()->data;
         $json = json_encode( $request );
         if($this->profile->validateIdRol($json)){
-            $this->profile->createRol($json);
-            $_SESSION['rol_success']='Rol creado exitosamente.';
+            $_SESSION['rol_error']='Rol ya existe, intenta con otro dato';
             Flight::redirect('/setting');
         }else{
-            $_SESSION['rol_error']='Rol ya existe, intenta con otro dato';
+            $this->profile->createRol($json);
+            $_SESSION['rol_success']='Rol creado exitosamente.';
             Flight::redirect('/setting');
         }
         

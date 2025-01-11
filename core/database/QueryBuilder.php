@@ -13,8 +13,7 @@ class QueryBuilder{
 
     public function validateIdUser($data){
         $values = json_decode($data, true);
-
-        $validate = "SELECT id FROM table_user WHERE nombre = ? AND apellido = ? LIMIT 1";
+        $validate = "SELECT id FROM table_users WHERE nombre = ? AND apellido = ? LIMIT 1";
         
         try{
             $queryId=$this->conn->prepare($validate);
@@ -23,12 +22,14 @@ class QueryBuilder{
             $queryId->execute();
 
             if($queryId->rowCount() > 0){
-                echo "El usuario ya fue registrado";
-                return;
+                echo "El rol ya fue registrado";
+                return true;
+            }else{
+                return false;
             }
         }catch(PDOException $e){
             echo "Error".$e->getMessage();
-            return;
+            return false;
         }
     }
     public function createUser($data){
@@ -75,11 +76,13 @@ class QueryBuilder{
 
             if($queryId->rowCount() > 0){
                 echo "El rol ya fue registrado";
-                return;
+                return true;
+            }else{
+                return false;
             }
         }catch(PDOException $e){
             echo "Error".$e->getMessage();
-            return;
+            return false;
         }
     }
     public function createRol($data){
@@ -103,6 +106,22 @@ class QueryBuilder{
             $query->execute();
             $resul = $query->fetchAll(PDO::FETCH_OBJ);
             return $resul;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
+
+    public function createVentaBasic($data){
+        $values = json_decode($data, true);
+        $sql = "INSERT INTO table_venta_basica (valor,tipo,estado,nombre) VALUES (?,?,?,?)";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$values['valor'],PDO::PARAM_INT);
+            $query->bindParam(2,$values['tipo'],PDO::PARAM_STR);
+            $query->bindParam(3, $values['estado'],PDO::PARAM_STR);
+            $query->bindParam(4,$values['nombre'],PDO::PARAM_STR);
+            $query->execute();
+            
         }catch(PDOException $e){
             echo "Error".$e->getMessage();
         }

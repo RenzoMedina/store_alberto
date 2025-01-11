@@ -31,11 +31,12 @@ CREATE TABLE IF NOT EXISTS table_users(
 /*
 ? table of ventas
 */
-CREATE TABLE IF NOT EXISTS table_ventas(
+CREATE TABLE IF NOT EXISTS table_venta_basica(
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `valor` FLOAT(7,3) NOT NULL,
     `tipo` VARCHAR(20) NOT NULL,
-    `estado` VARCHAR(20) NOT NULL,  
+    `estado` VARCHAR(20) NOT NULL, 
+    `nombre` VARCHAR(60),
     `create_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `update_at` TIMESTAMP
 )ENGINE = InnoDB;

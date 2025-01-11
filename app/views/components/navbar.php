@@ -51,7 +51,7 @@
             </button>
             <ul id="dropdown-ventas" class="hidden py-2 space-y-2">
                <li>
-                  <a href="#"
+                  <a href="/store"
                      class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                      <svg  class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -63,7 +63,7 @@
 
 
 
-                     <span class="flex-1 ms-3 whitespace-nowrap">Ventas basicas</span></a>
+                     <span class="flex-1 ms-3 whitespace-nowrap">Ventas básicas</span></a>
                </li>
                <li>
                   <a href="#"

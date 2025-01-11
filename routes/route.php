@@ -22,12 +22,18 @@ Flight::route('GET /login', function(){
 
 Flight::route("POST /profile",[$profile,'store'] );
 
+/*
+ * Routes of store
+ */
 Flight::group('/store', function(){
     //class StoreController
     $store = StoreController::class;
     Flight::route('/', [$store, 'index']);
 });
 
+/*
+ * Routes of user
+ */
 Flight::group('/user', function(){
     //class UserController
     $user = UserController::class;
@@ -36,6 +42,9 @@ Flight::group('/user', function(){
     Flight::route('POST /store',[$user, 'store']);
 });
 
+/*
+ * Routes of product 
+ */
 Flight::group("/product", function(){
     //class ProductController
     $product = ProductController::class;
