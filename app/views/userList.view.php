@@ -4,7 +4,6 @@ use core\database\QueryBuilder;
 $cone = new QueryBuilder();
 $data = $cone->getAllUser();
 ?>
-?>
 <div class="p-4 sm:ml-64">
 <p class="text-5xl text-center font-semibold mb-5">Lista de usuarios</p>
 
