@@ -1,10 +1,12 @@
 <?
+use app\controllers\ProfileController;
 use app\controllers\HomeController;
 use app\controllers\UserController;
 use app\controllers\StoreController;
 use app\controllers\ProductController;
 
 $home = HomeController::class;
+$profile = ProfileController::class;
 
 Flight::route('GET /', [$home,'index']);
 
@@ -12,13 +14,13 @@ Flight::route('GET /report',function(){
     view('report');
 });
 
-Flight::route('GET /setting',function(){
-    view('settings');
-});
+Flight::route('GET /setting',[$profile,'index']);
 
 Flight::route('GET /login', function(){
     view('login');
 });
+
+Flight::route("POST /profile",[$profile,'store'] );
 
 Flight::group('/store', function(){
     //class StoreController
@@ -29,7 +31,10 @@ Flight::group('/store', function(){
 Flight::group('/user', function(){
     //class UserController
     $user = UserController::class;
-    Flight::route('GET /', [$user, 'index']);
+    Flight::route('GET /', function(){
+        view('user');
+    });
+    Flight::route('GET /list', [$user, 'index']);
     Flight::route('POST /store',[$user, 'store']);
 });
 

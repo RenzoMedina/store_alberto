@@ -9,7 +9,7 @@ class UserController{
         $this->user = new QueryBuilder();
     }
     public function index(){
-        view('user');
+        view('userList');
     }
     public function store(){
         session_start();

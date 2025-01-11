@@ -6,7 +6,7 @@ USE bmhkm2itgpivjvpoy9p1;
 */
 CREATE TABLE IF NOT EXISTS table_roles(
     `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `rol` VARCHAR(50)NOT NULL,
+    `rol` VARCHAR(50) NOT NULL,
     `estado` VARCHAR(20) NOT NULL,  
     `create_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `update_at` TIMESTAMP
