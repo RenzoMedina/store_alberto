@@ -62,7 +62,26 @@ class QueryBuilder{
             echo "Error".$e->getMessage();
         }
     }
+    public function validateIdRol($data){
+        $values = json_decode($data, true);
 
+        $validate = "SELECT id FROM table_roles WHERE rol = ? AND estado = ? LIMIT 1";
+        
+        try{
+            $queryId=$this->conn->prepare($validate);
+            $queryId->bindParam(1, $values['rol'],PDO::PARAM_STR);
+            $queryId->bindParam(2, $values['estado'], PDO::PARAM_STR);
+            $queryId->execute();
+
+            if($queryId->rowCount() > 0){
+                echo "El rol ya fue registrado";
+                return;
+            }
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+            return;
+        }
+    }
     public function createRol($data){
         $values = json_decode($data, true);
         $sql = "INSERT INTO table_roles (rol,estado) VALUES (?,?)";

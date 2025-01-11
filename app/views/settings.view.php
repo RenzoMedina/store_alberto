@@ -13,6 +13,18 @@
             <?php unset($_SESSION['rol_success']); ?>
         </script>
     <?php }; ?>
+
+    <?php if (isset($_SESSION['rol_error'])) { ?>
+        <script>
+            Swal.fire({
+                icon: "error",
+                title: "Advertencia!!",
+                text: '<?php echo $_SESSION['rol_error']; ?>'
+                });
+            // Eliminar el mensaje de sesión
+            <?php unset($_SESSION['rol_error']); ?>
+        </script>
+    <?php };?>
 <div class="p-4 sm:ml-64">
    <div class="grid grid-cols-2">
    <div class="mx-auto">
