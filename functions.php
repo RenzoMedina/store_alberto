@@ -1,5 +1,9 @@
 <?php
 function view($path, $params=[]){
     extract($params);
-    require "app/views/{$path}.view.php";
+    return  require "app/views/{$path}.view.php";
+}
+
+function dd($var){
+    var_dump($var);
 }

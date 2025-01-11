@@ -13,7 +13,8 @@ class ProfileController{
     }
 
     public function index(){
-        view('settings');
+        $data = $this->profile->getAllRol();
+        view('settings', ['data'=>$data]);
     }
     public function store(){
         session_start();

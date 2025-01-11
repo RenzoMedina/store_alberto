@@ -9,7 +9,9 @@ class UserController{
         $this->user = new QueryBuilder();
     }
     public function index(){
-        view('userList');
+        $data = $this->user->getAllUser();
+        //dd($data);
+        view('userList', ['data' => $data]);
     }
     public function store(){
         session_start();

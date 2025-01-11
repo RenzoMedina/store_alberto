@@ -14,5 +14,5 @@
             // Eliminar el mensaje de sesión
             <?php unset($_SESSION['user_success']); ?>
         </script>
-    <?php }; ?>
+    <?php };?>
 <? require 'partials/footer.php'; ?>

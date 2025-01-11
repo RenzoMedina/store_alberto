@@ -1,6 +1,4 @@
-<? require 'partials/header.php'; 
-
-use core\database\QueryBuilder;?>
+<? require 'partials/header.php'; ?>
 <? include 'components/navbar.php'; ?>
 <?php session_start();?>
 
@@ -14,10 +12,7 @@ use core\database\QueryBuilder;?>
             // Eliminar el mensaje de sesión
             <?php unset($_SESSION['rol_success']); ?>
         </script>
-    <?php };    
-        $cone = new QueryBuilder();
-        $data = $cone->getAllRol();
-        ?>
+    <?php }; ?>
 <div class="p-4 sm:ml-64">
    <div class="grid grid-cols-2">
    <div class="mx-auto">
@@ -52,6 +47,7 @@ Agregar
         <tbody>
 
             <? foreach($data as $item) {?>
+                
             <tr class="bg-white border-b">
             <td class="px-6 py-4">
                   <? echo $item->id ?>
@@ -65,7 +61,7 @@ Agregar
                 <td class="px-6 py-4 text-right">
                     <div class="">
                     <button>
-                    <svg class="w-6 h-6 text-gray-800 dark:text-orange-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-green-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
   <path fill-rule="evenodd" d="M14 4.182A4.136 4.136 0 0 1 16.9 3c1.087 0 2.13.425 2.899 1.182A4.01 4.01 0 0 1 21 7.037c0 1.068-.43 2.092-1.194 2.849L18.5 11.214l-5.8-5.71 1.287-1.31.012-.012Zm-2.717 2.763L6.186 12.13l2.175 2.141 5.063-5.218-2.141-2.108Zm-6.25 6.886-1.98 5.849a.992.992 0 0 0 .245 1.026 1.03 1.03 0 0 0 1.043.242L10.282 19l-5.25-5.168Zm6.954 4.01 5.096-5.186-2.218-2.183-5.063 5.218 2.185 2.15Z" clip-rule="evenodd"/>
 </svg>
 
