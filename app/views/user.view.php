@@ -1,10 +1,20 @@
 
 <? require 'partials/header.php'; ?>
 <? include 'components/navbar.php'; 
-use core\database\QueryBuilder;
-$cone = new QueryBuilder();
-$data = $cone->getAllRol();
+session_start();
 ?>
+<?php if (isset($_SESSION['user_error'])) { ?>
+        <script>
+            Swal.fire({
+                icon: "error",
+                title: "Advertencia!!",
+                text: '<?php echo $_SESSION['user_error']; ?>'
+                });
+            // Eliminar el mensaje de sesión
+            <?php unset($_SESSION['user_error']); ?>
+        </script>
+    <?php };?>
+
 <div class="p-4 sm:ml-64">
 <p class="text-5xl text-center font-semibold">Registro nuevo usuario</p>
 <form class="max-w-sm mx-auto mt-10 border-2 border-gray-300 p-5 rounded-lg shadow-xl" action="/user/store" method="POST">

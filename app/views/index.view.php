@@ -15,4 +15,5 @@
             <?php unset($_SESSION['user_success']); ?>
         </script>
     <?php };?>
+    
 <? require 'partials/footer.php'; ?>

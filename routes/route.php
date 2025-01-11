@@ -31,9 +31,7 @@ Flight::group('/store', function(){
 Flight::group('/user', function(){
     //class UserController
     $user = UserController::class;
-    Flight::route('GET /', function(){
-        view('user');
-    });
+    Flight::route('GET /',[$user, 'main']);
     Flight::route('GET /list', [$user, 'index']);
     Flight::route('POST /store',[$user, 'store']);
 });

@@ -11,6 +11,26 @@ class QueryBuilder{
         $this->conn = Connection::start();
     }
 
+    public function validateIdUser($data){
+        $values = json_decode($data, true);
+
+        $validate = "SELECT id FROM table_user WHERE nombre = ? AND apellido = ? LIMIT 1";
+        
+        try{
+            $queryId=$this->conn->prepare($validate);
+            $queryId->bindParam(1, $values['nombre'],PDO::PARAM_STR);
+            $queryId->bindParam(2, $values['apellido'], PDO::PARAM_STR);
+            $queryId->execute();
+
+            if($queryId->rowCount() > 0){
+                echo "El usuario ya fue registrado";
+                return;
+            }
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+            return;
+        }
+    }
     public function createUser($data){
         $values = json_decode($data, true);
         $sql = "INSERT INTO table_users (nombre,apellido,password,repeat_password,id_rol,estado) VALUES (?,?,?,?,?,?)";
