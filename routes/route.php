@@ -30,6 +30,7 @@ Flight::group('/store', function(){
     $store = StoreController::class;
     Flight::route('GET /', [$store, 'index']);
     Flight::route('POST /create', [$store, 'store']);
+    Flight::route('POST /box', [$store, 'box']);
 });
 
 /*

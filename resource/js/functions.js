@@ -7,4 +7,24 @@ export function fecha(){
     return result
 }
 
-
+export function advertencia(formularioId,title,text,confirmation,canceled, title_ok, text_ok){
+    Swal.fire({
+        title: title, 
+        text: text, 
+        icon: 'warning', 
+        showCancelButton: true, 
+        confirmButtonColor: '#3085d6', 
+        cancelButtonColor: '#d33', 
+        confirmButtonText: confirmation,
+        cancelButtonText:canceled,
+      }).then((result) => {
+        if (result.isConfirmed) { 
+            Swal.fire({
+                title: title_ok,
+                text: text_ok,
+                icon: "success"
+              });
+        document.getElementById(formularioId).submit(); 
+    }
+      });
+}

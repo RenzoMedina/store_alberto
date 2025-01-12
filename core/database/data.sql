@@ -83,3 +83,14 @@ CREATE TABLE IF NOT EXISTS table_pago_proveedor(
     `update_at` TIMESTAMP,
     CONSTRAINT fk_id_prooveedor FOREIGN KEY (`id_prooveedor`) REFERENCES `table_proveedores` (`id`)
 )ENGINE = InnoDB;
+
+/*
+? table of cierre de caja
+*/
+CREATE TABLE IF NOT EXISTS total_ventas_diarias(
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `fecha` DATE NOT NULL,
+    `total` FLOAT(26,3) NOT NULL,
+    `create_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `update_at` TIMESTAMP
+)ENGINE = InnoDB;

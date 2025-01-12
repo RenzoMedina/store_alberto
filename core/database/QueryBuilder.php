@@ -142,5 +142,30 @@ class QueryBuilder{
             echo "Error".$e->getMessage();
         }
     }
+
+    public function cierreCaja(){
+        $sql = "SELECT SUM(valor) AS total_ventas FROM table_venta_basica";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->execute();
+            $resul = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $total = $resul[0];
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
+    public function totalCierreCaja($total){
+        $fecha = date("Y-m-d");
+        $sql = "INSERT INTO total_ventas_diarias(fecha,total) VALUES (?,?)";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$fecha);
+            $query->bindParam(2,$total,PDO::PARAM_INT);
+            $query->execute();
+            
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
     
 }

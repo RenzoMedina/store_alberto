@@ -67,9 +67,8 @@ session_start();
    </form>
 
 <!---Table--->
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-20" style="max-height: 350px; overflow-y: auto;">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-600 ">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+<table class="w-full text-sm text-left rtl:text-right text-gray-600 ">
+        <thead class="text-xs text-gray-300 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-300">
             <tr>
                 <th scope="col" class="px-6 py-3">
                     Fecha
@@ -83,8 +82,14 @@ session_start();
                 <th scope="col" class="px-6 py-3">
                     Estado
                 </th>
+                <th scope="col" class="px-6 py-3">
+                    Acción
+                </th>
             </tr>
         </thead>
+</table>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg" style="max-height: 350px; overflow-y: auto;">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-600 ">
         <tbody>
             <?php 
                if(isset($data)){
@@ -97,11 +102,26 @@ session_start();
                 <td class="px-6 py-4">
                 <? echo "$".number_format($item->valor, 0, '.', ',')?>
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 capitalize">
                 <? echo $item->tipo;?>
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 capitalize">
                 <? echo $item->estado;?>
+                </td>
+                <td class="px-6 py-4">
+    
+                    <button>
+                    <svg class="w-6 h-6 text-gray-800 dark:text-green-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M14 4.182A4.136 4.136 0 0 1 16.9 3c1.087 0 2.13.425 2.899 1.182A4.01 4.01 0 0 1 21 7.037c0 1.068-.43 2.092-1.194 2.849L18.5 11.214l-5.8-5.71 1.287-1.31.012-.012Zm-2.717 2.763L6.186 12.13l2.175 2.141 5.063-5.218-2.141-2.108Zm-6.25 6.886-1.98 5.849a.992.992 0 0 0 .245 1.026 1.03 1.03 0 0 0 1.043.242L10.282 19l-5.25-5.168Zm6.954 4.01 5.096-5.186-2.218-2.183-5.063 5.218 2.185 2.15Z" clip-rule="evenodd"/>
+</svg>
+
+                    </button>
+                    <button>
+                    <svg class="w-6 h-6 text-gray-800 dark:text-red-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+  <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
+</svg>
+                    </button>
+           
                 </td>
             </tr>
             <? }}
@@ -109,13 +129,15 @@ session_start();
         </tbody>
     </table>
 </div>
-<div class="float-end mt-4">
-         <button type="buttom" id="cierre_caja"
+      <div class="float-end mt-4">
+         <form action="/store/box" method="POST" id="cierre_caja">
+         <button 
             class="focus:outline-none flex items-center text-white bg-blue-700 hover:bg-blue-700 focus:ring-1 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-1 mb-2 ">
             <svg class="w-5 h-5 text-white mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 18h14M5 18v3h14v-3M5 18l1-9h12l1 9M16 6v3m-4-3v3m-2-6h8v3h-8V3Zm-1 9h.01v.01H9V12Zm3 0h.01v.01H12V12Zm3 0h.01v.01H15V12Zm-6 3h.01v.01H9V15Zm3 0h.01v.01H12V15Zm3 0h.01v.01H15V15Z"/>
          </svg>
          Cierre de caja</button>
-               </div>
+         </form>
+      </div>
 </div>
 <? require 'partials/footer.php'; ?>
