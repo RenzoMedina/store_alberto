@@ -33,7 +33,8 @@ CREATE TABLE IF NOT EXISTS table_users(
 */
 CREATE TABLE IF NOT EXISTS table_venta_basica(
     `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `valor` FLOAT(7,3) NOT NULL,
+    `fecha` DATE NOT NULL,
+    `valor` FLOAT(15,3) NOT NULL,
     `tipo` VARCHAR(20) NOT NULL,
     `estado` VARCHAR(20) NOT NULL, 
     `nombre` VARCHAR(60),

@@ -112,18 +112,35 @@ class QueryBuilder{
     }
 
     public function createVentaBasic($data){
-        $values = json_decode($data, true);
-        $sql = "INSERT INTO table_venta_basica (valor,tipo,estado,nombre) VALUES (?,?,?,?)";
+        $values = json_decode($data, true);        
+        $sql = "INSERT INTO table_venta_basica (fecha,valor,tipo,estado,nombre) VALUES (?,?,?,?,?)";
         try{
             $query = $this->conn->prepare($sql);
-            $query->bindParam(1,$values['valor'],PDO::PARAM_INT);
-            $query->bindParam(2,$values['tipo'],PDO::PARAM_STR);
-            $query->bindParam(3, $values['estado'],PDO::PARAM_STR);
-            $query->bindParam(4,$values['nombre'],PDO::PARAM_STR);
+            $query->bindParam(1,$values['fecha']);
+            $query->bindParam(2,$values['valor'],PDO::PARAM_INT);
+            $query->bindParam(3,$values['tipo'],PDO::PARAM_STR);
+            $query->bindParam(4, $values['estado'],PDO::PARAM_STR);
+            $query->bindParam(5,$values['nombre'],PDO::PARAM_NULL);
             $query->execute();
             
         }catch(PDOException $e){
             echo "Error".$e->getMessage();
         }
     }
+
+    public function getAllVenta(){
+        //$fecha = date('Y-m-d');
+        $fecha = '2025-01-11';
+        $sql = "SELECT * FROM table_venta_basica WHERE fecha = ?";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1, $fecha, PDO::PARAM_STR);
+            $query->execute();
+            $resul = $query->fetchAll(PDO::FETCH_OBJ);
+            return $resul;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
+    
 }

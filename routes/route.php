@@ -28,7 +28,8 @@ Flight::route("POST /profile",[$profile,'store'] );
 Flight::group('/store', function(){
     //class StoreController
     $store = StoreController::class;
-    Flight::route('/', [$store, 'index']);
+    Flight::route('GET /', [$store, 'index']);
+    Flight::route('POST /create', [$store, 'store']);
 });
 
 /*
