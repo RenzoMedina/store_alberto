@@ -25,7 +25,7 @@ class StoreController{
     public function box(){
        $valor = $this->store_con->cierreCaja();
        $this->store_con->totalCierreCaja($valor["total_ventas"]);
-       view('report');
+       Flight::redirect("/report");
     }
     public function show($id){}
     public function edit($id){}

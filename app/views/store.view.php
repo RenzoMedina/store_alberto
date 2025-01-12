@@ -100,7 +100,7 @@ session_start();
                     <? echo $item->fecha;?>
                 </th>
                 <td class="px-6 py-4">
-                <? echo "$".number_format($item->valor, 0, '.', ',')?>
+                <? echo "$ ".number_format($item->valor, 0, '.', ',')?>
                 </td>
                 <td class="px-6 py-4 capitalize">
                 <? echo $item->tipo;?>

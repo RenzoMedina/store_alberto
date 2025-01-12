@@ -27,7 +27,7 @@
     <?php };?>
 <div class="p-4 sm:ml-64">
    <div class="grid grid-cols-2">
-   <div class="mx-auto">
+   <div>
       <div class="flex justify-between">
          <p class="text-4xl mb-2 font-semibold">Roles</p>
          <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" data-modal-toggle="authentication-modal" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-2 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 flex items-center ">
@@ -38,7 +38,7 @@
 Agregar
          </button>
       </div>
-     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+     <div class="relative overflow-x-auto shadow-md sm:rounded-lg" style="max-height: 300px; overflow-y: auto;">
      <table class="w-full text-sm text-left rtl:text-right text-gray-600 ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>

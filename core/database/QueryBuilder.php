@@ -168,4 +168,15 @@ class QueryBuilder{
         }
     }
     
+    public function getTotalCierreCaja(){
+        $sql = "SELECT * FROM total_ventas_diarias";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->execute();
+            $resul = $query->fetchAll(PDO::FETCH_OBJ);
+            return $resul;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
 }

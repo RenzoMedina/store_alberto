@@ -1,18 +1,19 @@
 <?
 use app\controllers\ProfileController;
 use app\controllers\HomeController;
+use app\controllers\ProveedorController;
+use app\controllers\ReportController;
 use app\controllers\UserController;
 use app\controllers\StoreController;
 use app\controllers\ProductController;
 
 $home = HomeController::class;
 $profile = ProfileController::class;
+$report = ReportController::class;
 
 Flight::route('GET /', [$home,'index']);
 
-Flight::route('GET /report',function(){
-    view('report');
-});
+Flight::route('GET /report',[$report,'index']);
 
 Flight::route('GET /setting',[$profile,'index']);
 
@@ -51,6 +52,15 @@ Flight::group("/product", function(){
     //class ProductController
     $product = ProductController::class;
     Flight::route('GET /', [$product, 'index']);
+});
+
+/*
+ * Routes of proveedor
+ */
+Flight::group("/proveedor", function(){
+    //class ProductController
+    $proveedor = ProveedorController::class;
+    Flight::route('GET /', [$proveedor, 'index']);
 });
 
 Flight::start();
