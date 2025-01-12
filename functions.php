@@ -7,3 +7,7 @@ function view($path, $params=[]){
 function dd($var){
     var_dump($var);
 }
+
+function isUserLoggedIn() { 
+    return isset($_SESSION['user']);
+}

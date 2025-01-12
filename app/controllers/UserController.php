@@ -33,6 +33,27 @@ class UserController{
         }
         
     }
+    public function login(){
+        session_start();
+        $request = Flight::request()->data;
+        $json = json_encode( $request );
+        $resul = $this->user->validateLogin($json);
+        if(isUserLoggedIn()){
+            $_SESSION['user'] = [ 
+                'id' => $resul['id'], 
+                'nombre' => $resul['nombre'], 
+                'rol' => $resul['rol'] ];
+            Flight::redirect("/");
+        }else{
+            Flight::redirect("/login");
+        }
+        /*$_SESSION['user'] = [ 
+            'id' => $resul['id'], 
+            'nombre' => $resul['nombre'], 
+            'rol' => $resul['rol'] ];*/
+        
+        //Flight::json($_SESSION['user']);
+    }
 
     public function show($id){
 

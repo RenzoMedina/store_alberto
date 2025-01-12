@@ -5,6 +5,7 @@ fventa.value = fecha()
 const tipo = document.getElementById("tipo")
 const nombreCredi = document.getElementById("nombreCredi")
 const cierre_caja = document.getElementById("cierre_caja")
+const formLogin = document.getElementById("formLogin")
 
 tipo.addEventListener("change", () =>{
     if(tipo.value === "credito"){
@@ -24,4 +25,9 @@ cierre_caja.addEventListener("submit",e =>{
         "Cierre con éxito",
         "Se ha finalizado tu jornada!!"
     )
+})
+
+formLogin.addEventListener("submit",e =>{
+    e.preventDefault()
+    alert("click")
 })

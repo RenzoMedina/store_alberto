@@ -11,6 +11,24 @@ class QueryBuilder{
         $this->conn = Connection::start();
     }
 
+    public function validateLogin($data){
+        $values = json_decode($data, true);
+        $validate = "SELECT u.*, r.rol AS rol, r.estado AS rol_estado FROM table_users u INNER JOIN table_roles r ON u.id_rol = r.id WHERE nombre = ?";
+        
+        try{
+            $queryId=$this->conn->prepare($validate);
+            $queryId->bindParam(1, $values['nombre'],PDO::PARAM_STR);
+            $queryId->execute();
+            $resul = $queryId->fetch(PDO::FETCH_ASSOC);
+            if($resul && password_verify($values['password'],$resul['password'])){
+                return $resul;
+            }else{
+                return false;
+            }
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
     public function validateIdUser($data){
         $values = json_decode($data, true);
         $validate = "SELECT id FROM table_users WHERE nombre = ? AND apellido = ? LIMIT 1";
@@ -37,8 +55,10 @@ class QueryBuilder{
         $sql = "INSERT INTO table_users (nombre,apellido,password,repeat_password,id_rol,estado) VALUES (?,?,?,?,?,?)";
         try{
             $query = $this->conn->prepare($sql);
-            $query->bindParam(1,$values['nombre'],PDO::PARAM_STR);
-            $query->bindParam(2,$values['apellido'],PDO::PARAM_STR);
+            $nombre_min =strtolower($values['nombre']);
+            $query->bindParam(1,$nombre_min,PDO::PARAM_STR);
+            $apellido_min =strtolower($values['apellido']);
+            $query->bindParam(2,$apellido_min,PDO::PARAM_STR);
             $hashedPassword = password_hash($values['password'], PASSWORD_DEFAULT);
             $query->bindParam(3, $hashedPassword,PDO::PARAM_STR);
             $repeatHashedPassword = password_hash($values['repeat_password'],  PASSWORD_DEFAULT);

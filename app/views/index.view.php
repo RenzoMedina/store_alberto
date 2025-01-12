@@ -4,7 +4,8 @@
    <h1>Aqui ira la vista general de los reportes </h1>
 </div>
 <?php session_start();?>
-<?php if (isset($_SESSION['user_success'])) { ?>
+<?php 
+if (isset($_SESSION['user_success'])) { ?>
         <script>
             Swal.fire({
                 icon: 'success',
@@ -15,5 +16,5 @@
             <?php unset($_SESSION['user_success']); ?>
         </script>
     <?php };?>
-    
+
 <? require 'partials/footer.php'; ?>

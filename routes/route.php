@@ -43,6 +43,7 @@ Flight::group('/user', function(){
     Flight::route('GET /',[$user, 'main']);
     Flight::route('GET /list', [$user, 'index']);
     Flight::route('POST /store',[$user, 'store']);
+    Flight::route('POST /login',[$user, 'login']);
 });
 
 /*
