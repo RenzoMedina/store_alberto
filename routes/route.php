@@ -64,6 +64,9 @@ Flight::group("/proveedor", function(){
     //class ProductController
     $proveedor = ProveedorController::class;
     Flight::route('GET /', [$proveedor, 'index']);
+    Flight::route('GET /pago', function(){
+        view('proveedorPago');
+    });
 });
 
 Flight::start();

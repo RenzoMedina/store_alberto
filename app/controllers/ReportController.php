@@ -12,9 +12,10 @@ class ReportController{
     }
     public function index(){
         $reporteDiario = $this->report->getTotalCierreCaja();
-
+        //$reporteEfectivo = $this->report->detailsEfectivo();
         view('report',[
-            'reporteDiario'=>$reporteDiario,
+            'reporteDiario'=>$reporteDiario
         ]);
     }
+    
 }
