@@ -65,7 +65,6 @@ session_start();
       </div>
       
    </form>
-
 <!---Table--->
 <table class="w-full text-sm text-left rtl:text-right text-gray-600 ">
         <thead class="text-xs text-gray-300 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-300">

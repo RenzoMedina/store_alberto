@@ -35,8 +35,12 @@ class StoreController{
     public function pagoCredito(){
         session_start();
         $request = Flight::request()->data;
-        //$json = json_encode( $request );
-        Flight::json($request);
+        $json = json_encode( $request );
+        $this->store_con->createPagoCredito($json);
+        $this->store_con->updateStateVenta($json);
+        $_SESSION['pago_credito_ok']='Se ha realizado el pago con éxito!';
+        Flight::redirect("/store/credit");
+
     }
     public function show($id){}
     public function edit($id){}

@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS total_ventas_diarias(
 /*
 ? table of cierre de caja
 */
-CREATE TABLE IF NOT EXISTS pago_credito(
+CREATE TABLE IF NOT EXISTS table_pago_credito(
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `fecha` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `nombre` VARCHAR(100)NOT NULL,

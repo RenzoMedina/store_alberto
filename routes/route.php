@@ -33,7 +33,7 @@ Flight::group('/store', function(){
     Flight::route('POST /create', [$store, 'store']);
     Flight::route('POST /box', [$store, 'box']);
     Flight::route('GET /credit', [$store, 'listCredit']);
-    Flight::route('POST /credit/pago', [$store, 'pagoCredito']);
+    Flight::route('POST /pago', [$store, 'pagoCredito']);
 });
 
 /*

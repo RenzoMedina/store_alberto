@@ -8,6 +8,7 @@ use core\database\Connection;
 class QueryBuilder{
     protected $conn;
     public function __construct(){
+        date_default_timezone_set('America/Santiago');
         $this->conn = Connection::start();
     }
 
@@ -131,6 +132,9 @@ class QueryBuilder{
         }
     }
 
+    /*
+        * Query of ventas
+     */
     public function createVentaBasic($data){
         $values = json_decode($data, true);        
         $sql = "INSERT INTO table_venta_basica (fecha,valor,tipo,estado,nombre) VALUES (?,?,?,?,?)";
@@ -150,9 +154,9 @@ class QueryBuilder{
     }
 
     public function getAllVenta(){
-        //$fecha = date('Y-m-d');
-        $fecha = '2025-01-11';
-        $sql = "SELECT * FROM table_venta_basica WHERE fecha = ?";
+        $fecha = date('Y-m-d');
+        //$fecha = '2025-01-11';
+        $sql = "SELECT * FROM table_venta_basica WHERE fecha = ? ORDER BY  create_at DESC";
         try{
             $query = $this->conn->prepare($sql);
             $query->bindParam(1, $fecha, PDO::PARAM_STR);
@@ -211,5 +215,50 @@ class QueryBuilder{
         }catch(PDOException $e){
             echo "Error".$e->getMessage();
         }
+    }
+
+    public function updateStateVenta($data){
+        $values = json_decode($data, true);  
+        $sql = "UPDATE table_venta_basica SET estado = ?, tipo = ?  WHERE nombre = ?";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$values['estado'],PDO::PARAM_STR);
+            $query->bindParam(2,$values['nombre'],PDO::PARAM_STR);
+            $query->bindParam(3,$values['nombre'],PDO::PARAM_STR);
+            $query->execute();
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
+
+    public function createPagoCredito($data){
+        $values = json_decode($data, true);  
+        $sql = "INSERT INTO table_pago_credito (nombre,estado,total) VALUES (?,?,?)";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$values['nombre'],PDO::PARAM_STR);
+            $query->bindParam(2,$values['estado'],PDO::PARAM_STR);
+            $query->bindParam(3,$values['total'],PDO::PARAM_INT);
+            $query->execute();
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
+
+    public function detailsEfectivo(){
+        $fecha = date('Y-m-d');
+        $sql = "SELECT fecha, tipo, SUM(valor) AS total_valor FROM table_venta_basica WHERE fecha = ? AND tipo = 'efectivo' GROUP BY fecha, tipo ORDER BY fecha DESC;";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$fecha,PDO::PARAM_STR);
+            $query->execute();
+            $resul = $query->fetchAll(PDO::FETCH_OBJ);
+            return $resul;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
+    public function detailsTarjeta(){
+
     }
 }
