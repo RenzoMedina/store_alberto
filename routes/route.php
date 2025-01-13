@@ -32,6 +32,7 @@ Flight::group('/store', function(){
     Flight::route('GET /', [$store, 'index']);
     Flight::route('POST /create', [$store, 'store']);
     Flight::route('POST /box', [$store, 'box']);
+    Flight::route('GET /credit', [$store, 'listCredit']);
 });
 
 /*

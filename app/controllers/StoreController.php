@@ -27,6 +27,10 @@ class StoreController{
        $this->store_con->totalCierreCaja($valor["total_ventas"]);
        Flight::redirect("/report");
     }
+    public function listCredit(){
+        $data = $this->store_con->getAllCredit();
+        view('credito', ['data'=>$data]);
+    }
     public function show($id){}
     public function edit($id){}
     public function update($id){}

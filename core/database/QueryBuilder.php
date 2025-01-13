@@ -140,7 +140,8 @@ class QueryBuilder{
             $query->bindParam(2,$values['valor'],PDO::PARAM_INT);
             $query->bindParam(3,$values['tipo'],PDO::PARAM_STR);
             $query->bindParam(4, $values['estado'],PDO::PARAM_STR);
-            $query->bindParam(5,$values['nombre'],PDO::PARAM_NULL);
+            $name_min = strtolower($values['nombre']);
+            $query->bindParam(5,$name_min,PDO::PARAM_STR);
             $query->execute();
             
         }catch(PDOException $e){
@@ -190,6 +191,18 @@ class QueryBuilder{
     
     public function getTotalCierreCaja(){
         $sql = "SELECT * FROM total_ventas_diarias";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->execute();
+            $resul = $query->fetchAll(PDO::FETCH_OBJ);
+            return $resul;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
+
+    public function getAllCredit(){
+        $sql = "SELECT nombre, SUM(valor) AS total_valor FROM table_venta_basica WHERE tipo ='credito' GROUP BY nombre";
         try{
             $query = $this->conn->prepare($sql);
             $query->execute();
