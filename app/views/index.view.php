@@ -16,5 +16,4 @@ if (isset($_SESSION['user_success'])) { ?>
             <?php unset($_SESSION['user_success']); ?>
         </script>
     <?php };?>
-
 <? require 'partials/footer.php'; ?>

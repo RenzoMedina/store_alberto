@@ -77,8 +77,7 @@ CREATE TABLE IF NOT EXISTS table_proveedores(
 CREATE TABLE IF NOT EXISTS table_pago_proveedor(
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `valor` FLOAT(7,3) NOT NULL,
-    `id_prooveedor` INT,
-    `estado` VARCHAR(20) NOT NULL,  
+    `id_prooveedor` INT,  
     `create_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `update_at` TIMESTAMP,
     CONSTRAINT fk_id_prooveedor FOREIGN KEY (`id_prooveedor`) REFERENCES `table_proveedores` (`id`)
