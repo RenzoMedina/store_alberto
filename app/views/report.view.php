@@ -58,19 +58,25 @@
                      Fecha
                   </th>
                   <th scope="col" class="px-6 py-3">
+                     Tipo de pago
+                  </th>
+                  <th scope="col" class="px-6 py-3">
                      Total
                   </th>
                </tr>
          </thead>
          <tbody>
-               <?php foreach($reporteDiario as $item) { ?>
+               <?php foreach($reporteEfectivo as $item) { ?>
                
                <tr class="bg-white border-b">
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                      <? echo $item->fecha;?>
                   </th>
+                  <td class="px-6 py-4 capitalize">
+                  <? echo $item->tipo;?>
+                  </td>
                   <td class="px-6 py-4">
-                  <? echo "$ ".number_format($item->total, 0, '.', ',');?>
+                  <? echo "$ ".number_format($item->total_valor, 0, '.', ',');?>
                   </td>
                </tr>
                <? }
@@ -103,19 +109,25 @@
                      Fecha
                   </th>
                   <th scope="col" class="px-6 py-3">
+                  Tipo de pago
+                  </th>
+                  <th scope="col" class="px-6 py-3">
                      Total
                   </th>
                </tr>
          </thead>
          <tbody>
-               <?php foreach($reporteDiario as $item) { ?>
+               <?php foreach($reporteTarjeta as $item) { ?>
                
-               <tr class="bg-white border-b">
+                  <tr class="bg-white border-b">
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                      <? echo $item->fecha;?>
                   </th>
+                  <td class="px-6 py-4 capitalize">
+                  <? echo $item->tipo;?>
+                  </td>
                   <td class="px-6 py-4">
-                  <? echo "$ ".number_format($item->total, 0, '.', ',');?>
+                  <? echo "$ ".number_format($item->total_valor, 0, '.', ',');?>
                   </td>
                </tr>
                <? }

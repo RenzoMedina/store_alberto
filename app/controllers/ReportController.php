@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use Exception;
 use core\database\QueryBuilder;
 
 class ReportController{
@@ -11,11 +12,19 @@ class ReportController{
         $this->report = new QueryBuilder();
     }
     public function index(){
+        try{
         $reporteDiario = $this->report->getTotalCierreCaja();
-        //$reporteEfectivo = $this->report->detailsEfectivo();
+        $reporteEfectivo = $this->report->detailsEfectivo();
+        $reporteTarjeta = $this->report->detailsTarjeta();
         view('report',[
-            'reporteDiario'=>$reporteDiario
+            'reporteDiario'=>$reporteDiario,
+            'reporteEfectivo'=>$reporteEfectivo,
+            'reporteTarjeta'=>$reporteTarjeta
         ]);
+        }catch (Exception $e) { 
+            echo "Error: " . $e->getMessage(); 
+        }
     }
-    
+    public function showEfectivo(){
+    }
 }

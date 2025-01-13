@@ -223,7 +223,7 @@ class QueryBuilder{
         try{
             $query = $this->conn->prepare($sql);
             $query->bindParam(1,$values['estado'],PDO::PARAM_STR);
-            $query->bindParam(2,$values['nombre'],PDO::PARAM_STR);
+            $query->bindParam(2,$values['tipo'],PDO::PARAM_STR);
             $query->bindParam(3,$values['nombre'],PDO::PARAM_STR);
             $query->execute();
         }catch(PDOException $e){
@@ -247,7 +247,7 @@ class QueryBuilder{
 
     public function detailsEfectivo(){
         $fecha = date('Y-m-d');
-        $sql = "SELECT fecha, tipo, SUM(valor) AS total_valor FROM table_venta_basica WHERE fecha = ? AND tipo = 'efectivo' GROUP BY fecha, tipo ORDER BY fecha DESC;";
+        $sql = "SELECT fecha, tipo, SUM(valor) AS total_valor FROM table_venta_basica WHERE fecha = ? AND tipo = 'efectivo' GROUP BY fecha, tipo ORDER BY fecha DESC";
         try{
             $query = $this->conn->prepare($sql);
             $query->bindParam(1,$fecha,PDO::PARAM_STR);
@@ -259,6 +259,16 @@ class QueryBuilder{
         }
     }
     public function detailsTarjeta(){
-
+        $fecha = date('Y-m-d');
+        $sql = "SELECT fecha, tipo, SUM(valor) AS total_valor FROM table_venta_basica WHERE fecha = ? AND tipo = 'tarjeta' GROUP BY fecha, tipo ORDER BY fecha DESC";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$fecha,PDO::PARAM_STR);
+            $query->execute();
+            $resul = $query->fetchAll(PDO::FETCH_OBJ);
+            return $resul;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
     }
 }

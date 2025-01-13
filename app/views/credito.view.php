@@ -45,7 +45,7 @@ session_start();
                     <input type="hidden" name="nombre" value="<? echo $item->nombre;?>">
                     <input type="hidden" name="estado" value="pagado">
                     <input type="hidden" name="total" value="<? echo $item->total_valor;?>">
-                    <input type="hidden" name="estado" value="efectivo">
+                    <input type="hidden" name="tipo" value="efectivo">
                     <button >
                     <svg class="w-6 h-6 text-green-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd" d="M7 6a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-2v-4a3 3 0 0 0-3-3H7V6Z" clip-rule="evenodd"/>
