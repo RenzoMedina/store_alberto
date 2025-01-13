@@ -31,6 +31,13 @@ class StoreController{
         $data = $this->store_con->getAllCredit();
         view('credito', ['data'=>$data]);
     }
+
+    public function pagoCredito(){
+        session_start();
+        $request = Flight::request()->data;
+        //$json = json_encode( $request );
+        Flight::json($request);
+    }
     public function show($id){}
     public function edit($id){}
     public function update($id){}

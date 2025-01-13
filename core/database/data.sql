@@ -93,3 +93,17 @@ CREATE TABLE IF NOT EXISTS total_ventas_diarias(
     `create_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `update_at` TIMESTAMP
 )ENGINE = InnoDB;
+
+/*
+? table of cierre de caja
+*/
+CREATE TABLE IF NOT EXISTS pago_credito(
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `fecha` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `nombre` VARCHAR(100)NOT NULL,
+    `estado` VARCHAR(20) NOT NULL,
+    `total` FLOAT(26,3) NOT NULL,
+    `create_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `update_at` TIMESTAMP
+)ENGINE = InnoDB;
+

@@ -6,6 +6,7 @@ const tipo = document.getElementById("tipo")
 const nombreCredi = document.getElementById("nombreCredi")
 const cierre_caja = document.getElementById("cierre_caja")
 const formLogin = document.getElementById("formLogin")
+const pago_credito= document.getElementById("pago_credito")
 
 tipo.addEventListener("change", () =>{
     if(tipo.value === "credito"){
@@ -28,6 +29,11 @@ cierre_caja.addEventListener("submit",e =>{
 })
 
 formLogin.addEventListener("submit",e =>{
+    e.preventDefault()
+    alert("click")
+})
+
+pago_credito.addEventListener("submit", e =>{
     e.preventDefault()
     alert("click")
 })
