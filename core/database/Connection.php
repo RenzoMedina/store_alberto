@@ -1,4 +1,4 @@
-<?
+<?php
 namespace core\database;
 use PDO;
 use PDOException;

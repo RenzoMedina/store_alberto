@@ -1,6 +1,6 @@
 
-<? require 'partials/header.php'; ?>
-<? include 'components/navbar.php'; 
+<?php require 'partials/header.php'; ?>
+<?php include 'components/navbar.php'; 
 session_start();
 ?>
 <?php if (isset($_SESSION['user_error'])) { ?>
@@ -39,9 +39,9 @@ session_start();
   <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 ">Seleccionar el cargo</label>
   <select id="countries" name="id_rol" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
     <option selected>Elije uno ...</option>
-    <? foreach ($data as $item){ ?>
-    <option value="<? echo $item->id?>"> <? echo $item->rol?></option>
-    <? }?>
+    <?php foreach ($data as $item): ?>
+    <option value="<?php echo $item->id?>"> <?php echo $item->rol?></option>
+    <? endforeach?>
   </select>
   </div>
   <input type="text" hidden name="estado" value="activo">
@@ -49,4 +49,4 @@ session_start();
 </form>
 
 </div>
-<? require 'partials/footer.php'; ?>
+<?php require 'partials/footer.php'; ?>

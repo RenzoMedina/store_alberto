@@ -1,4 +1,4 @@
-<?
+<?php
 namespace app\controllers;
 
 use core\database\QueryBuilder;

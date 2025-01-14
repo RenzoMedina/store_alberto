@@ -1,5 +1,5 @@
-<? require 'partials/header.php'; ?>
-<? include 'components/navbar.php'; ?>
+<?php require 'partials/header.php'; ?>
+<?php include 'components/navbar.php'; ?>
 <div class="p-4 sm:ml-64">
 <p class="text-4xl uppercase font-semibold mb-5">Pago de proveedores</p>
 <form class="py-4 font-semibold">
@@ -27,4 +27,4 @@
         </div>
     </form>
 </div>
-<? require 'partials/footer.php'; ?>
+<?php require 'partials/footer.php'; ?>

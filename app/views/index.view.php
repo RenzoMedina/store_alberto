@@ -1,5 +1,5 @@
-<? require 'partials/header.php'; ?>
-<? include 'components/navbar.php'; ?>
+<?php require 'partials/header.php'; ?>
+<?php include 'components/navbar.php'; ?>
 <div class="p-4 sm:ml-64">
    <h1>Aqui ira la vista general de los reportes </h1>
 </div>
@@ -16,4 +16,4 @@ if (isset($_SESSION['user_success'])) { ?>
             <?php unset($_SESSION['user_success']); ?>
         </script>
     <?php };?>
-<? require 'partials/footer.php'; ?>
+<?php require 'partials/footer.php'; ?>

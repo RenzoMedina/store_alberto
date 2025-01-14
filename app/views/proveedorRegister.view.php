@@ -1,5 +1,5 @@
-<? require 'partials/header.php'; ?>
-<? include 'components/navbar.php'; ?>
+<?php require 'partials/header.php'; ?>
+<?php include 'components/navbar.php'; ?>
 <div class="p-4 sm:ml-64">
 <p class="text-4xl uppercase text-center font-semibold mb-5">Registro de proveedores</p>
 <form class="max-w-md mx-auto mt-3 p-6 shadow-2xl font-semibold border-2 rounded-xl">
@@ -46,4 +46,4 @@
 </button>
   </form>
 </div>
-<? require 'partials/footer.php'; ?>
+<?php require 'partials/footer.php'; ?>

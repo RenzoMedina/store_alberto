@@ -1,5 +1,5 @@
-<? require 'partials/header.php'; ?>
-<? include 'components/navbar.php';?>
+<?php require 'partials/header.php'; ?>
+<?php include 'components/navbar.php';?>
 <div class="p-4 sm:ml-64">
 <p class="text-5xl text-center font-semibold mb-5">Lista de usuarios</p>
 
@@ -25,20 +25,20 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($data as $item) { ?>
+            <?php foreach($data as $item) : ?>
             
             <tr class="bg-white border-b">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    <? echo $item->id;?>
+                    <?php echo $item->id;?>
                 </th>
                 <td class="px-6 py-4">
-                <? echo $item->nombre;?>
+                <?php echo $item->nombre;?>
                 </td>
                 <td class="px-6 py-4">
-                <? echo $item->apellido;?>
+                <?php echo $item->apellido;?>
                 </td>
                 <td class="px-6 py-4">
-                <? echo $item->rol;?>
+                <?php echo $item->rol;?>
                 </td>
                 <td class="px-6 py-4">
                     <div class="">
@@ -56,10 +56,10 @@
                     </div>
                 </td>
             </tr>
-            <? }
+            <?php endforeach
             ?>
         </tbody>
     </table>
 </div>
 </div>
-<? require 'partials/footer.php'; ?>
+<?php require 'partials/footer.php'; ?>

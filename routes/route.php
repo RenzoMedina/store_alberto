@@ -1,4 +1,4 @@
-<?
+<?php
 use app\controllers\ProfileController;
 use app\controllers\HomeController;
 use app\controllers\ProveedorController;

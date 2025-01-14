@@ -1,5 +1,5 @@
-<? require 'partials/header.php'; ?>
-<? include 'components/navbar.php'; 
+<?php require 'partials/header.php'; ?>
+<?php include 'components/navbar.php'; 
 session_start();
 ?>
 <?php if (isset($_SESSION['store_ok'])) { ?>
@@ -91,21 +91,21 @@ session_start();
     <table class="w-full text-sm text-left rtl:text-right text-gray-600 ">
         <tbody>
             <?php 
-               if(isset($data)){
-            foreach($data as $item) { ?>
+               if(isset($data)):
+            foreach($data as $item) : ?>
             
             <tr class="bg-white border-b">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    <? echo $item->fecha;?>
+                    <?php echo $item->fecha;?>
                 </th>
                 <td class="px-6 py-4">
-                <? echo "$ ".number_format($item->valor, 0, '.', ',')?>
+                <?php echo "$ ".number_format($item->valor, 0, '.', ',')?>
                 </td>
                 <td class="px-6 py-4 capitalize">
-                <? echo $item->tipo;?>
+                <?php echo $item->tipo;?>
                 </td>
                 <td class="px-6 py-4 capitalize">
-                <? echo $item->estado;?>
+                <?php echo $item->estado;?>
                 </td>
                 <td class="px-6 py-4">
     
@@ -123,7 +123,8 @@ session_start();
            
                 </td>
             </tr>
-            <? }}
+            <?php endforeach;
+            endif
             ?>
         </tbody>
     </table>
@@ -139,4 +140,4 @@ session_start();
          </form>
       </div>
 </div>
-<? require 'partials/footer.php'; ?>
+<?php require 'partials/footer.php'; ?>

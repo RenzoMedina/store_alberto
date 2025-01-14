@@ -1,5 +1,5 @@
-<? require 'partials/header.php'; ?>
-<? include 'components/navbar.php'; ?>
+<?php require 'partials/header.php'; ?>
+<?php include 'components/navbar.php'; ?>
 <?php session_start();?>
 
 <?php if (isset($_SESSION['rol_success'])) { ?>
@@ -58,17 +58,17 @@ Agregar
         </thead>
         <tbody>
 
-            <? foreach($data as $item) {?>
+            <?php foreach($data as $item) :?>
                 
             <tr class="bg-white border-b">
             <td class="px-6 py-4">
-                  <? echo $item->id ?>
+                  <?php echo $item->id ?>
                 </td>
                 <td class="px-6 py-4">
-                  <? echo $item->rol?>
+                  <?php echo $item->rol?>
                 </td>
                 <td class="px-6 py-4 capitalize">
-                <? echo $item->estado?>
+                <?php echo $item->estado?>
                 </td>
                 <td class="px-6 py-4 text-right">
                     <div class="">
@@ -88,7 +88,7 @@ Agregar
                     </div>
                 </td>
             </tr>
-            <? }?> 
+            <?php endforeach?> 
         </tbody>
     </table>
      </div>
@@ -138,4 +138,4 @@ Agregar
     </div>
 </div> 
 
-<? require 'partials/footer.php'; ?>
+<?php require 'partials/footer.php'; ?>

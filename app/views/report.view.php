@@ -1,5 +1,5 @@
-<? require 'partials/header.php'; ?>
-<? include 'components/navbar.php'; ?>
+<?php require 'partials/header.php'; ?>
+<?php include 'components/navbar.php'; ?>
 <div class="p-4 sm:ml-64">
    <div class="grid grid-cols-2 gap-x-6">
    
@@ -18,17 +18,17 @@
                </tr>
          </thead>
          <tbody>
-               <?php foreach($reporteDiario as $item) { ?>
+               <?php foreach($reporteDiario as $item) : ?>
                
                <tr class="bg-white border-b">
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                     <? echo $item->fecha;?>
+                     <?php echo $item->fecha;?>
                   </th>
                   <td class="px-6 py-4">
-                  <? echo "$ ".number_format($item->total, 0, '.', ',');?>
+                  <?php echo "$ ".number_format($item->total, 0, '.', ',');?>
                   </td>
                </tr>
-               <? }
+               <?php endforeach
                ?>
          </tbody>
       </table>
@@ -66,21 +66,20 @@
                </tr>
          </thead>
          <tbody>
-               <?php foreach($reporteEfectivo as $item) { ?>
+               <?php foreach($reporteEfectivo as $item) : ?>
                
                <tr class="bg-white border-b">
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                     <? echo $item->fecha;?>
+                     <?php echo $item->fecha;?>
                   </th>
                   <td class="px-6 py-4 capitalize">
-                  <? echo $item->tipo;?>
+                  <?php echo $item->tipo;?>
                   </td>
                   <td class="px-6 py-4">
-                  <? echo "$ ".number_format($item->total_valor, 0, '.', ',');?>
+                  <?php echo "$ ".number_format($item->total_valor, 0, '.', ',');?>
                   </td>
                </tr>
-               <? }
-               ?>
+               <?php endforeach ?>
          </tbody>
       </table>
       
@@ -117,21 +116,20 @@
                </tr>
          </thead>
          <tbody>
-               <?php foreach($reporteTarjeta as $item) { ?>
+               <?php foreach($reporteTarjeta as $item) : ?>
                
                   <tr class="bg-white border-b">
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                     <? echo $item->fecha;?>
+                     <?php echo $item->fecha;?>
                   </th>
                   <td class="px-6 py-4 capitalize">
-                  <? echo $item->tipo;?>
+                  <?php echo $item->tipo;?>
                   </td>
                   <td class="px-6 py-4">
-                  <? echo "$ ".number_format($item->total_valor, 0, '.', ',');?>
+                  <?php echo "$ ".number_format($item->total_valor, 0, '.', ',');?>
                   </td>
                </tr>
-               <? }
-               ?>
+               <?php endforeach ?>
          </tbody>
       </table>
       
@@ -165,18 +163,17 @@
                </tr>
          </thead>
          <tbody>
-               <?php foreach($reporteDiario as $item) { ?>
+               <?php foreach($reporteDiario as $item) : ?>
                
                <tr class="bg-white border-b">
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                     <? echo $item->fecha;?>
+                     <?php echo $item->fecha;?>
                   </th>
                   <td class="px-6 py-4">
-                  <? echo "$ ".number_format($item->total, 0, '.', ',');?>
+                  <?php echo "$ ".number_format($item->total, 0, '.', ',');?>
                   </td>
                </tr>
-               <? }
-               ?>
+               <?php endforeach ?>
          </tbody>
       </table>
       
@@ -197,4 +194,4 @@
    
    </div>
 </div>
-<? require 'partials/footer.php'; ?>
+<?php require 'partials/footer.php'; ?>

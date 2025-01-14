@@ -1,5 +1,5 @@
-<? require 'partials/header.php'; ?>
-<? include 'components/navbar.php';
+<?php require 'partials/header.php'; ?>
+<?php include 'components/navbar.php';
 session_start();
 ?>
 <?php if (isset($_SESSION['pago_credito_ok'])) { ?>
@@ -32,19 +32,19 @@ session_start();
             </tr>
         </thead>
         <tbody>
-            <?php foreach($data as $item) { ?>
+            <?php foreach($data as $item) : ?>
                 <form action="/store/pago" method="POST" id="pago_credito">
                 <tr class="bg-white border-b">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap capitalize">
-                    <? echo $item->nombre;?>
+                    <?php echo $item->nombre;?>
                 </th>
                 <td class="px-6 py-4">
-                <? echo "$ ".number_format($item->total_valor, 0, '.', ',') ?>
+                <?php echo "$ ".number_format($item->total_valor, 0, '.', ',') ?>
                 </td>
                 <td class="px-6 py-4">
-                    <input type="hidden" name="nombre" value="<? echo $item->nombre;?>">
+                    <input type="hidden" name="nombre" value="<?php echo $item->nombre;?>">
                     <input type="hidden" name="estado" value="pagado">
-                    <input type="hidden" name="total" value="<? echo $item->total_valor;?>">
+                    <input type="hidden" name="total" value="<?php echo $item->total_valor;?>">
                     <input type="hidden" name="tipo" value="efectivo">
                     <button >
                     <svg class="w-6 h-6 text-green-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -56,9 +56,9 @@ session_start();
                 </td>
             </tr>
                 </form>
-            <? }?>
+            <?php endforeach?>
         </tbody>
     </table>
 </div>
 </div>
-<? require 'partials/footer.php'; ?>
+<?php require 'partials/footer.php'; ?>
