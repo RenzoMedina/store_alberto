@@ -1,3 +1,4 @@
+import { Container } from 'postcss'
 import {fecha,advertencia} from './functions.js'
 
 const fventa = document.getElementById("fecha")
@@ -37,3 +38,4 @@ pago_credito.addEventListener("submit", e =>{
     e.preventDefault()
     alert("click")
 })
+

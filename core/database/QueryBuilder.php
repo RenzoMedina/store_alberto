@@ -271,4 +271,24 @@ class QueryBuilder{
             echo "Error".$e->getMessage();
         }
     }
+
+        /*
+        * Query of proveedor
+     */
+
+    public function createProveedor($data){
+        $values = json_decode($data, true);        
+        $sql = "INSERT INTO table_proveedores (rut,nombre,categoria,estado) VALUES (?,?,?,?)";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$values['rut_proveedor']);
+            $query->bindParam(2,$values['nombre_proveedor'],PDO::PARAM_STR);
+            $query->bindParam(3,$values['categorias'],PDO::PARAM_STR);
+            $query->bindParam(4, $values['estado'],PDO::PARAM_STR);
+            $query->execute();
+            
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
 }

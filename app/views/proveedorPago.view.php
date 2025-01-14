@@ -6,13 +6,13 @@
         <div class="grid md:grid-cols-3 gap-6 mb-4">
             <div class="mb-4">
                 <label for="Provedor" class="block mb-2 text-base font-semibold text-gray-900">Provedores</label>
-                <select name="Provedor" id="Provedor" class="bg-gray-50 border border-gray-300 text-gray-900 text-base font-semibold rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-12 p-3 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select name="Provedor" id="Provedor" class="bg-gray-50 border border-gray-300 text-gray-900 text-base font-semibold rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-12 p-3 ">
                     <option selected>Seleccionar provedor</option>
                 </select>
             </div>
             <div class="mb-4">
                 <label for="precio" class="block mb-2 text-base font-semibold text-gray-900">Precio</label>
-                <input type="text" id="precio" class="bg-gray-50 border border-gray-300 text-gray-900 text-base font-semibold rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-12 p-3 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Valor" required />
+                <input type="text" id="precio" class="bg-gray-50 border border-gray-300 text-gray-900 text-base font-semibold rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-12 p-3 " placeholder="Ingrese el valor" required />
             </div>
             <div class="mt-8">
             <button class="bg-slate-200 text-center w-56 rounded-2xl h-14 relative text-black text-base font-semibold group" type="button">

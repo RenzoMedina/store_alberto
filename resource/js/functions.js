@@ -28,3 +28,11 @@ export function advertencia(formularioId,title,text,confirmation,canceled, title
     }
       });
 }
+
+export function success(tipo,title, text){
+  Swal.fire({
+    icon: tipo,
+    title: title,
+    text: text
+});
+}
