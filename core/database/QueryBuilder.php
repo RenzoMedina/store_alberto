@@ -169,9 +169,11 @@ class QueryBuilder{
     }
 
     public function cierreCaja(){
-        $sql = "SELECT SUM(valor) AS total_ventas FROM table_venta_basica";
+        $fecha = date("Y-m-d");
+        $sql = "SELECT SUM(valor) AS total_ventas FROM table_venta_basica WHERE fecha = ? ";
         try{
             $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$fecha);
             $query->execute();
             $resul = $query->fetchAll(PDO::FETCH_ASSOC);
             return $total = $resul[0];
@@ -194,7 +196,7 @@ class QueryBuilder{
     }
     
     public function getTotalCierreCaja(){
-        $sql = "SELECT * FROM total_ventas_diarias";
+        $sql = "SELECT * FROM total_ventas_diarias ORDER BY create_at DESC";
         try{
             $query = $this->conn->prepare($sql);
             $query->execute();
