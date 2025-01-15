@@ -39,4 +39,21 @@ class ProveedorController{
         $_SESSION['proveedor_udpate']='Proveedor se ha actualizado con éxito!!';
         Flight::redirect("/proveedor/list");
     }
+
+    public function pago(){
+        $data = $this->proveedor->getAllProveedor();
+        $pago= $this->proveedor->getPagoProveedor();
+        view('proveedorPago', [
+            'data'=>$data,
+            'pago'=>$pago
+        ]);
+    }
+    public function pagoCreate(){
+        session_start();
+        $data= Flight::request()->data;
+        $json = json_encode( $data );
+        $this->proveedor->pagoProveedor($json);
+        $_SESSION['pago_proveedor_ok']='Pago a proveedor con éxito!';
+        Flight::redirect("/proveedor/pago");
+    }
 }

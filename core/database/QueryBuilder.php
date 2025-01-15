@@ -334,4 +334,36 @@ class QueryBuilder{
             echo "Error".$e->getMessage();
         }
     }
+
+    public function pagoProveedor($data){
+        $values = json_decode($data, true);        
+        $sql = "INSERT INTO table_pago_proveedor (valor,id_prooveedor) VALUES (?,?)";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$values['valor'],PDO::PARAM_INT);
+            $query->bindParam(2,$values['id_proveedor'],PDO::PARAM_INT);
+            $query->execute();
+            
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
+
+    public function getPagoProveedor(){
+        $sql = "SELECT pp.id AS pago_id,pp.valor,pp.create_at AS pago_creado,pp.update_at AS pago_actualizado,p.id AS proveedor_id,p.rut,IFNULL(p.nombre, 'N/A') AS nombre,IFNULL(p.categoria, 'N/A') AS categoria,IFNULL(p.estado, 'N/A') AS estado,IFNULL(p.create_at, 'N/A') AS proveedor_creado,IFNULL(p.update_at, 'N/A') AS proveedor_actualizado
+        FROM 
+            table_pago_proveedor pp
+        LEFT JOIN 
+            table_proveedores p ON p.id = pp.id_prooveedor
+        ORDER BY 
+            pp.create_at DESC";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->execute();
+            $resul = $query->fetchAll(PDO::FETCH_OBJ);
+            return $resul;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
 }
