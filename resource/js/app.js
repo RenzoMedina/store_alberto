@@ -1,4 +1,4 @@
-import { Container } from 'postcss'
+
 import {fecha,advertencia} from './functions.js'
 
 const fventa = document.getElementById("fecha")

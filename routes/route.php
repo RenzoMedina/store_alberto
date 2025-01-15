@@ -67,7 +67,10 @@ Flight::group("/proveedor", function(){
     Flight::route('GET /pago', function(){
         view('proveedorPago');
     });
+    Flight::route('GET /list', [$proveedor, 'getAll']);
     Flight::route('POST /store', [$proveedor, 'store']);
+    Flight::route('GET /edit/@id', [$proveedor, 'edit']);
+    Flight::route('POST /update/@id', [$proveedor, 'update']);
 });
 
 Flight::start();

@@ -291,4 +291,47 @@ class QueryBuilder{
             echo "Error".$e->getMessage();
         }
     }
+    public function getAllProveedor(){
+        $sql = "SELECT * FROM table_proveedores ORDER BY nombre";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->execute();
+            $resul = $query->fetchAll(PDO::FETCH_OBJ);
+            return $resul;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
+
+    public function getByIdProveedor($id){
+        $sql = "SELECT * FROM table_proveedores WHERE id=?";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$id, PDO::PARAM_INT);
+            $query->execute();
+            $resul = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $resul;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
+
+    public function updateProveedor($data, $id){
+        $fecha = date("Y-m-d H:i:s");
+        $values = json_decode($data, true);        
+        $sql = "UPDATE table_proveedores SET rut=?,nombre=?,categoria=?,estado=?, update_at=? WHERE id=?";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$values['rut_proveedor']);
+            $query->bindParam(2,$values['nombre_proveedor'],PDO::PARAM_STR);
+            $query->bindParam(3,$values['categorias'],PDO::PARAM_STR);
+            $query->bindParam(4, $values['estado'],PDO::PARAM_STR);
+            $query->bindParam(5, $fecha,PDO::PARAM_STR);
+            $query->bindParam(6, $id,PDO::PARAM_INT);
+            $query->execute();
+            
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
 }

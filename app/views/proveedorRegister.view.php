@@ -1,19 +1,5 @@
 <?php require 'partials/header.php'; ?>
-<?php include 'components/navbar.php'; 
-  session_start();
-?>
-
-<?php if (isset($_SESSION['proveedor_ok'])) : ?>
-   <script>
-            Swal.fire({
-                icon: 'success',
-                title: '¡Éxito!',
-                text: '<?php echo $_SESSION['proveedor_ok']; ?>'
-            });
-            // Eliminar el mensaje de sesión
-            <?php unset($_SESSION['proveedor_ok']); ?>
-        </script>
-    <?php endif?>
+<?php include 'components/navbar.php'; ?>
 <div class="p-4 sm:ml-64">
 <p class="text-4xl uppercase text-center font-semibold mb-5">Registro de proveedores</p>
 <form class="max-w-md mx-auto mt-3 p-6 shadow-2xl font-semibold border-2 rounded-xl" action="/proveedor/store" method="POST">
