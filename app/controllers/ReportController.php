@@ -16,10 +16,12 @@ class ReportController{
         $reporteDiario = $this->report->getTotalCierreCaja();
         $reporteEfectivo = $this->report->detailsEfectivo();
         $reporteTarjeta = $this->report->detailsTarjeta();
+        $reportePagoProveedor = $this->report->getTotalPagoProveedor();
         view('report',[
             'reporteDiario'=>$reporteDiario,
             'reporteEfectivo'=>$reporteEfectivo,
-            'reporteTarjeta'=>$reporteTarjeta
+            'reporteTarjeta'=>$reporteTarjeta,
+            'reportePagoProveedor'=>$reportePagoProveedor
         ]);
         }catch (Exception $e) { 
             echo "Error: " . $e->getMessage(); 

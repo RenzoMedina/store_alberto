@@ -338,12 +338,14 @@ class QueryBuilder{
     }
 
     public function pagoProveedor($data){
+        $fecha = date("Y-m-d");
         $values = json_decode($data, true);        
-        $sql = "INSERT INTO table_pago_proveedor (valor,id_prooveedor) VALUES (?,?)";
+        $sql = "INSERT INTO table_pago_proveedor (fecha,valor,id_prooveedor) VALUES (?,?,?)";
         try{
             $query = $this->conn->prepare($sql);
-            $query->bindParam(1,$values['valor'],PDO::PARAM_INT);
-            $query->bindParam(2,$values['id_proveedor'],PDO::PARAM_INT);
+            $query->bindParam(1,$fecha);
+            $query->bindParam(2,$values['valor'],PDO::PARAM_INT);
+            $query->bindParam(3,$values['id_proveedor'],PDO::PARAM_INT);
             $query->execute();
             
         }catch(PDOException $e){
@@ -352,7 +354,7 @@ class QueryBuilder{
     }
 
     public function getPagoProveedor(){
-        $sql = "SELECT pp.id AS pago_id,pp.valor,pp.create_at AS pago_creado,pp.update_at AS pago_actualizado,p.id AS proveedor_id,p.rut,IFNULL(p.nombre, 'N/A') AS nombre,IFNULL(p.categoria, 'N/A') AS categoria,IFNULL(p.estado, 'N/A') AS estado,IFNULL(p.create_at, 'N/A') AS proveedor_creado,IFNULL(p.update_at, 'N/A') AS proveedor_actualizado
+        $sql = "SELECT pp.id AS pago_id,pp.fecha,pp.valor,pp.create_at AS pago_creado,pp.update_at AS pago_actualizado,p.id AS proveedor_id,p.rut,IFNULL(p.nombre, 'N/A') AS nombre,IFNULL(p.categoria, 'N/A') AS categoria,IFNULL(p.estado, 'N/A') AS estado,IFNULL(p.create_at, 'N/A') AS proveedor_creado,IFNULL(p.update_at, 'N/A') AS proveedor_actualizado
         FROM 
             table_pago_proveedor pp
         LEFT JOIN 
@@ -361,6 +363,20 @@ class QueryBuilder{
             pp.create_at DESC";
         try{
             $query = $this->conn->prepare($sql);
+            $query->execute();
+            $resul = $query->fetchAll(PDO::FETCH_OBJ);
+            return $resul;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
+
+    public function getTotalPagoProveedor(){
+        $sql = "SELECT fecha,SUM(valor) AS suma_dia FROM table_pago_proveedor WHERE fecha = ?";
+        $fecha = date("Y-m-d");
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$fecha);
             $query->execute();
             $resul = $query->fetchAll(PDO::FETCH_OBJ);
             return $resul;

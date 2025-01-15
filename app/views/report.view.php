@@ -149,7 +149,7 @@
    </div>
 
    <div>
-      <p class="text-3xl font-semibold mb-3">Pago de proveedores</p>
+      <p class="text-3xl font-semibold mb-3">Total Pago proveedor</p>
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg" style="max-height: 210px; overflow-y: auto;">
       <table class="w-full text-sm text-left rtl:text-right text-gray-600 ">
          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -163,14 +163,14 @@
                </tr>
          </thead>
          <tbody>
-               <?php foreach($reporteDiario as $item) : ?>
+               <?php foreach($reportePagoProveedor as $item) : ?>
                
                <tr class="bg-white border-b">
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                      <?php echo $item->fecha;?>
                   </th>
                   <td class="px-6 py-4">
-                  <?php echo "$ ".number_format($item->total, 0, '.', ',');?>
+                  <?php echo "$ ".number_format($item->suma_dia, 0, '.', ',');?>
                   </td>
                </tr>
                <?php endforeach ?>
