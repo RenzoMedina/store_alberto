@@ -384,4 +384,44 @@ class QueryBuilder{
             echo "Error".$e->getMessage();
         }
     }
+
+    /*
+     * Query of dashboard 
+     */
+
+     public function dasVentasDiarias(){
+        $sql = "SELECT COUNT(*) AS cantidad_ventas, SUM(valor) AS total_ventas FROM table_venta_basica";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->execute();
+            $resul = $query->fetchAll(PDO::FETCH_OBJ);
+            return $resul;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+     }
+
+     public function dasVentasDiariasEfectivo($estado){
+        $sql= "SELECT COUNT(*) AS cantidad_ventas, SUM(valor) AS total_ventas FROM table_venta_basica WHERE tipo = ?";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$estado, PDO::PARAM_STR);
+            $query->execute();
+            $resul = $query->fetchAll(PDO::FETCH_OBJ);
+            return $resul;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+     }
+     public function dasVentasDiariasCredito(){
+        $sql= "SELECT COUNT(*) AS cantidad_ventas, SUM(total) AS total_ventas FROM table_pago_credito";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->execute();
+            $resul = $query->fetchAll(PDO::FETCH_OBJ);
+            return $resul;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+     }
 }
