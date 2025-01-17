@@ -27,6 +27,20 @@ class ReportController{
             echo "Error: " . $e->getMessage(); 
         }
     }
-    public function showEfectivo(){
+    public function showReport(){
+        try{
+            $reporteEfectivo = $this->report->detailsEfectivo();
+            $reporteTarjeta = $this->report->detailsTarjeta();
+            $reportePagoProveedor = $this->report->getTotalPagoProveedor();
+            $reporteCredito= $this->report->detailsCredito();
+            view('reportVisual',[
+                'reporteCredito'=>$reporteCredito,
+                'reporteEfectivo'=>$reporteEfectivo,
+                'reporteTarjeta'=>$reporteTarjeta,
+                'reportePagoProveedor'=>$reportePagoProveedor
+            ]);
+            }catch (Exception $e) { 
+                echo "Error: " . $e->getMessage(); 
+            }
     }
 }

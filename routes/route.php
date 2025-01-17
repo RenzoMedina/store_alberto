@@ -14,6 +14,7 @@ $report = ReportController::class;
 Flight::route('GET /', [$home,'index']);
 
 Flight::route('GET /report',[$report,'index']);
+Flight::route('GET /report/visual',[$report,'showReport']);
 
 Flight::route('GET /setting',[$profile,'index']);
 

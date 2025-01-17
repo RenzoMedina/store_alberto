@@ -274,6 +274,20 @@ class QueryBuilder{
         }
     }
 
+    public function detailsCredito(){
+        $fecha = date('Y-m-d');
+        $sql = "SELECT fecha, tipo, SUM(valor) AS total_valor FROM table_venta_basica WHERE fecha = ? AND tipo = 'credito' GROUP BY fecha, tipo ORDER BY fecha DESC";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$fecha,PDO::PARAM_STR);
+            $query->execute();
+            $resul = $query->fetchAll(PDO::FETCH_OBJ);
+            return $resul;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
+
         /*
         * Query of proveedor
      */
