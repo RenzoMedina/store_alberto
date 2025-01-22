@@ -108,3 +108,17 @@ CREATE TABLE IF NOT EXISTS table_pago_credito(
     `update_at` TIMESTAMP
 )ENGINE = InnoDB;
 
+/*
+? table of cierre de facturacion
+*/
+CREATE TABLE IF NOT EXISTS table_facturacion(
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `fecha` DATE NOT NULL,
+    `numero` BIGINT NOT NULL,
+    `empresa` VARCHAR(60) NOT NULL,
+    `valor` FLOAT(26,3) NOT NULL,
+    `descripcion` TEXT NOT NULL,
+    `imagen` VARCHAR(250),
+    `create_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `update_at` TIMESTAMP
+)ENGINE = InnoDB;

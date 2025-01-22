@@ -56,6 +56,9 @@ Flight::group("/product", function(){
     //class ProductController
     $product = ProductController::class;
     Flight::route('GET /', [$product, 'index']);
+    Flight::route('GET /register', function(){
+        view('productRegister');
+    });
 });
 
 /*
@@ -73,4 +76,11 @@ Flight::group("/proveedor", function(){
     Flight::route('POST /update/@id', [$proveedor, 'update']);
 });
 
+
+/*
+ * Route of facturacion
+ */
+Flight::route('GET /facturacion', function(){
+    view('facturacion');
+});
 Flight::start();

@@ -41,7 +41,7 @@ session_start();
     <option selected>Elije uno ...</option>
     <?php foreach ($data as $item): ?>
     <option value="<?php echo $item->id?>"> <?php echo $item->rol?></option>
-    <? endforeach?>
+    <?php endforeach?>
   </select>
   </div>
   <input type="text" hidden name="estado" value="activo">
