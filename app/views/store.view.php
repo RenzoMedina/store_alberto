@@ -129,7 +129,7 @@ session_start();
                 <td class="px-6 py-4 capitalize">
                 <?php echo $item->estado;?>
                 </td>
-                <td class="px-6 py-4 flex">
+                <td class="px-6 py-4 flex items-center">
     
                     <button>
                     <a href="/store/edit/<?php echo $item->id;?>">

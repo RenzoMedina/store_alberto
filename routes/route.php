@@ -35,6 +35,7 @@ Flight::group('/store', function(){
     Flight::route('GET /credit', [$store, 'listCredit']);
     Flight::route('POST /box', [$store, 'box']);
     Flight::route('GET /credit', [$store, 'listCredit']);
+    Flight::route('GET /cierre', [$store, 'cierre']);
     Flight::route('GET /edit/@id', [$store, 'edit']);
     Flight::route('POST /pago', [$store, 'pagoCredito']);
     Flight::route('POST /destroy/@id', [$store, 'destroy']);

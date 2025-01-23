@@ -62,4 +62,8 @@ class StoreController{
         $_SESSION['venta_eliminado_ok']='Se ha eliminado con éxito!';
         Flight::redirect("/store");
     }
+
+    public function cierre(){
+        view('storeCierre');
+    }
 }
