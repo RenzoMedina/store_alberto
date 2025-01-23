@@ -17,7 +17,7 @@ if (isset($_SESSION['user_success'])) { ?>
 
 <div class="p-4 sm:ml-64">
    <p class="text-3xl mb-3 font-semibold">Resumen</p>
-<div class="grid grid-cols-3 gap-3">
+<div class="grid grid-cols-1 gap-3">
 <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
   <div class="flex justify-between">
     <?php foreach ($dasVentasDiarias as $item):?>
@@ -45,6 +45,7 @@ if (isset($_SESSION['user_success'])) { ?>
   </div>
 </div>
 
+<div class="grid grid-cols-3 gap-3">
 <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
   <div class="flex justify-between">
     <?php foreach ($dasVentasDiariasEfectivo as $item):?>
@@ -152,6 +153,7 @@ if (isset($_SESSION['user_success'])) { ?>
   </div>
 </div>
 
+</div>
 </div>
 </div>
 
