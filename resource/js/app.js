@@ -19,7 +19,7 @@ tipo.addEventListener("change", () =>{
 cierre_caja.addEventListener("submit",e =>{
     e.preventDefault()
     advertencia("cierre_caja",
-        '¿Estás seguro de cerrar caja?',
+        '¿Estás seguro de cerrar venta?',
         "¡No podrás revertir esto!",
         'Sí, confirmar', "No, cancelar!",
         "Cierre con éxito",
