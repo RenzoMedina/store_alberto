@@ -44,14 +44,21 @@ class StoreController{
     }
     public function edit($id){
         $data = $this->store_con->getByIdVenta($id);
+        //Flight::json($data);
         view('storeEdit', ['data'=>$data]);
     }
-    public function update($id){}
-    public function destroy($id){
+    public function update($id){
         session_start();
         $data = Flight::request()->data;
-        $this->store_con->deleteByIdVenta($id);
         $json = json_encode( $data );
+        $this->store_con->updateByIdVenta($id, $json);
+        $_SESSION['venta_actualizado_ok']='Se ha actualizado con éxito!';
+        Flight::redirect("/store");
+        
+    }
+    public function destroy($id){
+        session_start();
+        $this->store_con->deleteByIdVenta($id);
         $_SESSION['venta_eliminado_ok']='Se ha eliminado con éxito!';
         Flight::redirect("/store");
     }

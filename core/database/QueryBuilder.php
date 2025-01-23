@@ -311,6 +311,19 @@ class QueryBuilder{
             echo "Error".$e->getMessage();
         }
     }
+    public function updateByIdVenta($id, $data){
+        $values = json_decode($data, true);  
+        $sql = "UPDATE table_venta_basica SET valor = ?, tipo = ?  WHERE id = ?";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$values['valor'],PDO::PARAM_STR);
+            $query->bindParam(2,$values['tipo'],PDO::PARAM_STR);
+            $query->bindParam(3,$id,PDO::PARAM_INT);
+            $query->execute();
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
 
         /*
         * Query of proveedor

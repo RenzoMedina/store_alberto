@@ -13,7 +13,7 @@ session_start();
             <?php unset($_SESSION['store_ok']); ?>
         </script>
     <?php };?>
-    <?php if (isset($_SESSION['store_ok'])) { ?>
+    <?php if (isset($_SESSION['venta_eliminado_ok'])) { ?>
    <script>
             Swal.fire({
                 icon: 'success',
@@ -22,6 +22,17 @@ session_start();
             });
             // Eliminar el mensaje de sesión
             <?php unset($_SESSION['venta_eliminado_ok']); ?>
+        </script>
+    <?php };?>
+    <?php if (isset($_SESSION['venta_actualizado_ok'])) { ?>
+   <script>
+            Swal.fire({
+                icon: 'success',
+                title: '¡Éxito!',
+                text: '<?php echo $_SESSION['venta_actualizado_ok']; ?>'
+            });
+            // Eliminar el mensaje de sesión
+            <?php unset($_SESSION['venta_actualizado_ok']); ?>
         </script>
     <?php };?>
 <div class="p-4 sm:ml-64">
@@ -129,7 +140,7 @@ session_start();
                     </a>
                     </button>
                     <form action="/store/destroy/<?php echo $item->id;?>" method="POST" id="formDelete">
-                    <button type="submit">
+                    <button ty>
                     <input type="hidden" name="id" value="<?php echo $item->id;?>">
                     <svg class="w-6 h-6 text-gray-800 dark:text-red-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
   <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
