@@ -42,8 +42,17 @@ class StoreController{
         Flight::redirect("/store/credit");
 
     }
-    public function show($id){}
-    public function edit($id){}
+    public function edit($id){
+        $data = $this->store_con->getByIdVenta($id);
+        view('storeEdit', ['data'=>$data]);
+    }
     public function update($id){}
-    public function destroy($id){}
+    public function destroy($id){
+        session_start();
+        $data = Flight::request()->data;
+        $this->store_con->deleteByIdVenta($id);
+        $json = json_encode( $data );
+        $_SESSION['venta_eliminado_ok']='Se ha eliminado con éxito!';
+        Flight::redirect("/store");
+    }
 }

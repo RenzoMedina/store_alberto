@@ -288,6 +288,30 @@ class QueryBuilder{
         }
     }
 
+    public function getByIdVenta($id){
+        $sql = "SELECT * FROM table_venta_basica WHERE id=?";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$id, PDO::PARAM_INT);
+            $query->execute();
+            $resul = $query->fetchAll(PDO::FETCH_ASSOC);
+            return $resul;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
+    public function deleteByIdVenta($id){
+        $sql = "DELETE FROM table_venta_basica WHERE id=?";
+        try{
+            $query = $this->conn->prepare($sql);
+            $query->bindParam(1,$id, PDO::PARAM_INT);
+            $query->execute();
+            return true;
+        }catch(PDOException $e){
+            echo "Error".$e->getMessage();
+        }
+    }
+
         /*
         * Query of proveedor
      */

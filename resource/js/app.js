@@ -1,13 +1,11 @@
 
 import {fecha,advertencia} from './functions.js'
 
-const fventa = document.getElementById("fecha")
-fventa.value = fecha()
+const fventa = document.getElementById("fecha").value = fecha()
 const tipo = document.getElementById("tipo")
 const nombreCredi = document.getElementById("nombreCredi")
 const cierre_caja = document.getElementById("cierre_caja")
-const formLogin = document.getElementById("formLogin")
-const pago_credito= document.getElementById("pago_credito")
+const deleteSale = document.getElementById("formDelete")
 
 tipo.addEventListener("change", () =>{
     if(tipo.value === "credito"){
@@ -28,14 +26,14 @@ cierre_caja.addEventListener("submit",e =>{
         "Se ha finalizado tu jornada!!"
     )
 })
-
-formLogin.addEventListener("submit",e =>{
+deleteSale.addEventListener("submit", e =>{
     e.preventDefault()
-    alert("click")
-})
-
-pago_credito.addEventListener("submit", e =>{
-    e.preventDefault()
-    alert("click")
+    advertencia("formDelete",
+        '¿Estás seguro de eliminar la venta?',
+        "¡No podrás revertir esto!",
+        'Sí, confirmar', "No, cancelar!",
+        "Eliminado con éxito",
+        "Se ha eliminado la venta seleccionada!!"
+    )
 })
 

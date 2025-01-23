@@ -32,9 +32,12 @@ Flight::group('/store', function(){
     $store = StoreController::class;
     Flight::route('GET /', [$store, 'index']);
     Flight::route('POST /create', [$store, 'store']);
+    Flight::route('GET /credit', [$store, 'listCredit']);
     Flight::route('POST /box', [$store, 'box']);
     Flight::route('GET /credit', [$store, 'listCredit']);
+    Flight::route('GET /edit/@id', [$store, 'edit']);
     Flight::route('POST /pago', [$store, 'pagoCredito']);
+    Flight::route('POST /destroy/@id', [$store, 'destroy']);
 });
 
 /*
