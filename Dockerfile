@@ -14,15 +14,18 @@ RUN a2enmod rewrite
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
-# Instala las dependencias de Composer
+## Instala las dependencias de Composer y Node.js
 RUN apt-get update && apt-get install -y \
-    unzip \
-    && docker-php-ext-install pdo pdo_mysql \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
-    && apt-get install -y nodejs \
-    && composer install
+unzip \
+curl \
+gnupg \
+&& docker-php-ext-install pdo pdo_mysql \
+&& curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+&& curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
+&& apt-get install -y nodejs \
+&& composer install
 
+# Instala las dependencias de npm
 RUN npm install
 
 # Expone el puerto que será utilizado
