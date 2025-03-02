@@ -26,7 +26,7 @@ export function advertencia(formularioId,title,text,confirmation,canceled, title
               });
         document.getElementById(formularioId).submit(); 
     }
-      });
+  })
 }
 
 export function success(tipo,title, text){

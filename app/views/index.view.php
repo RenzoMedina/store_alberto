@@ -152,7 +152,6 @@ if (isset($_SESSION['user_success'])) { ?>
     </div>
   </div>
 </div>
-
 </div>
 </div>
 </div>
